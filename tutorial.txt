@@ -16,6 +16,7 @@ Install RHPAM 7.3
 - Username: rhpamAdmin
 - Password: admin123!@#
 - Next
+- Perform Default Configuration
 - Finish
 
 Start and Stop RHPAM 7.3
