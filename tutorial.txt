@@ -1,3 +1,23 @@
+Prerequisites
+---
+- JDK 8 installed
+- Modern browser
+
+Installation
+---
+RHPAM 7.3 will be installed on JBoss EAP 7.2
+Install JBoss EAP 7.2
+- Create folder for RHPAM73, remember no space in directory
+- unzip jboss-eap-7.2.0.zip
+Install RHPAM 7.3
+- run rhpam-installer-7.3.0.jar
+- set installation path to JBoss EAP 7.2 directory <jboss-eap-7.2>
+- Enable Business Central and Process Server
+- Username: rhpamAdmin
+- Password: admin123!@#
+- Next
+- Finish
+
 Create Project
 ---
 login-project-addproject
