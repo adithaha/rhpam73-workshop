@@ -125,6 +125,9 @@ Add Asset - Business Process
     - Name: permohonan
     - Type: Permohonan
     - + 
+    - Name: keputusan
+    - Type: Keputusan
+    - + 
     - Name: setujuKasiWaskon
     - Type: Boolean
     - + 
