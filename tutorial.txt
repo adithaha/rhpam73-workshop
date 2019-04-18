@@ -333,7 +333,34 @@ Trying business process
 Accessing RHPAM API
 ---
 - Open swagger definition at browser http://localhost:8080/kie-server/docs/#/
-- Getting container id
-  - KIE Server and KIE containers - /servers/containers
+- Getting container id using REST API
+  - KIE Server and KIE containers - /servers/containers - try it out
+  - Execute
   - Note down container id, ie. SKBPPh22Emas_1.0.0-SNAPSHOT
-  
+- Getting process id using REST API
+  - Process queries - /server/queries/containers/{containerId}/processes/definitions - try it out
+  - container id: <container-id> (ie. SKBPPh22Emas_1.0.0-SNAPSHOT)
+  - Execute
+  - Note down process id, ie. SKBPPhEmas.SKBPPhEmasProcess
+- Starting process instance using REST API
+  - Proces instances - server/containers/{containerId}/processes/{processId}/instances
+  - container id: <container-id> (ie. SKBPPh22Emas_1.0.0-SNAPSHOT)
+  - process id: <process-id> (ie. SKBPPhEmas.SKBPPhEmasProcess)
+  - body:
+    {
+        "permohonan": {
+            "Permohonan": {
+                "no": "111",
+                "tanggal": "2019-04-18",
+                "wp": {
+                     "namaWP": "aditya",
+                     "npwp": "123",
+                     "alamatWP": "jakarta"
+                } 
+            }
+        }
+    }
+  - Execute
+- Check if process instance is created on business central web
+  - Menu - Manage - Process Instances
+   
