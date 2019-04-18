@@ -330,4 +330,10 @@ Trying business process
   - Completed SKBPPhEmasProcess - View Tasks
   - You should be able to see all completed tasks
 
+Accessing RHPAM API
+---
+- Open swagger definition at browser http://localhost:8080/kie-server/docs/#/
+- Getting container id
+  - KIE Server and KIE containers - /servers/containers
+  - Note down container id, ie. SKBPPh22Emas_1.0.0-SNAPSHOT
   
