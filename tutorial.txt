@@ -253,23 +253,6 @@ Deploy
 ---
 - Go to SKBPPh22Emas - Deploy
 
-
-Create Approver User
----
-- shutdown RH PAM, ctrl-c on console
-- Go to cmd/terminal
-  $ cd <jboss-eap>/bin
-  $ add-user.bat
-    type of user: b
-    Username: approver
-    Password: approver123!@#
-    Re-enter Password: approver123!@#
-    Groups: user,approver
-    Is this correct: yes
-    slave host: no
-- start RH PAM, standalone.bat -c standalone-full.xml
-
-
 Create Approver User
 ---
 - Go to cmd/terminal
@@ -279,7 +262,7 @@ Create Approver User
     Username: user1
     Password: user1
     Are you sure you want to use the password entered yes/no? yes
-    Re-enter Password: approver123!@#
+    Re-enter Password: user1
     Groups: user,approver
     Is this correct: yes
     slave host: no
