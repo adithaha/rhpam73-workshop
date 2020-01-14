@@ -33,7 +33,7 @@ Start and Stop RHPAM 7.3
 Prepare user
 ---
 $ cd bin  
-$ ./add-user.sh -a -u broker1 -p broker1 -g user,broker  
-$ ./add-user.sh -a -u manager1 -p manager1 -g user,manager  
-$ ./add-user.sh -a -u appraiser1 -p appraiser1 -g user,appraiser  
+$ add-user.bat -a -u broker1 -p broker1 -g user,broker  
+$ add-user.bat -a -u manager1 -p manager1 -g user,manager  
+$ add-user.bat -a -u appraiser1 -p appraiser1 -g user,appraiser  
   
