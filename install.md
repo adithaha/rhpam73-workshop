@@ -22,9 +22,9 @@ Install RHPAM 7.5.1
 Start and Stop RHPAM 7.3
 ---
 - go to cmd/terminal
-- Start RHPAM 7.3
-  $ cd <jboss-eap>/bin
-  $ standalone.bat -c standalone-full.xml
+- Start RHPAM 7.3  
+  $ cd <jboss-eap>/bin  
+  $ standalone.bat -c standalone-full.xml  
   Open browser: http://localhost:8080/business-central
 - Stop RHPAM 7.3
   $ ctrl-c
