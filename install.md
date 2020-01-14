@@ -29,3 +29,11 @@ Start and Stop RHPAM 7.3
 - Stop RHPAM 7.3
   $ ctrl-c
   
+  
+Prepare user
+---
+$ cd bin
+$ ./add-user.sh -a -u broker1 -p broker1 -g user,broker
+$ ./add-user.sh -a -u manager1 -p manager1 -g user,manager
+$ ./add-user.sh -a -u appraiser1 -p appraiser1 -g user,appraiser
+  
