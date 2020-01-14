@@ -25,6 +25,7 @@ Start and Stop RHPAM 7.3
 - Start RHPAM 7.3
   $ cd <jboss-eap>/bin
   $ standalone.bat -c standalone-full.xml
+  Open browser: http://localhost:8080/business-central
 - Stop RHPAM 7.3
   $ ctrl-c
   
