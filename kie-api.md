@@ -93,7 +93,7 @@ Header:
 ```
 Curl command
 ```
-curl -X PUT -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/19/states/claimed" -H  "accept: application/json"
+curl -X PUT -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/claimed" -H  "accept: application/json"
 ```
 
 5. start task id
@@ -127,7 +127,7 @@ Body: copy from https://raw.githubusercontent.com/adithaha/rhpam73-workshop/mast
 ```
 Curl command
 ```
-curl -X PUT -u 'approver1:approver1' --data @qualify.json "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/19/states/completed" -H  "accept: application/json" -H "content-type: application/json"
+curl -X PUT -u 'approver1:approver1' --data @qualify.json "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/completed" -H  "accept: application/json" -H "content-type: application/json"
 ```
 
 ### FINAL APPROVAL TASK (manager)
@@ -207,7 +207,7 @@ curl -X PUT -u 'manager1:manager1' "http://localhost:8080/kie-server/services/re
 12. review completed process instance, process-instance-state=2 means already completed
 ```
 URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/instances/<task-id>
-Method: PUT
+Method: GET
 Basic Auth: rhpamAdmin:admin123!@#
 Header: 
 - accept: application/json
