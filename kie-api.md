@@ -34,7 +34,7 @@ process id: Mortgage_Process.MortgageApprovalProcess
 — START PROCESS (admin) —
 
 
-1. start process
+1. start process  
 review the body request
 ```
 https://raw.githubusercontent.com/adithaha/rhpam73-workshop/master/start.json
@@ -49,8 +49,10 @@ Header:
 - content-type: application/json
 Body: copy from https://raw.githubusercontent.com/adithaha/rhpam73-workshop/master/start.json
 ```
+Curl command
+```
 curl -X POST -u 'rhpamAdmin:admin123!@#' --data @start.json "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/Mortgage_Process.MortgageApprovalProcess/instances" -H  "accept: application/json" -H  "content-type: application/json" 
-
+```
 
 — QUALIFY TASK (approver) —
 2. get task inbox, choose task id
