@@ -131,22 +131,90 @@ curl -X PUT -u 'approver1:approver1' --data @qualify.json "http://localhost:8080
 ```
 
 ### FINAL APPROVAL TASK (manager)
-6. get task inbox, choose task id
+7. get task inbox, note task id  
+```
+URL: http://localhost:8080/kie-server/services/rest/server/queries/tasks/instances/pot-owners?page=0&pageSize=10&sortOrder=true
+Method: GET
+Basic Auth: manager1:manager1
+Header: 
+- accept: application/json
+- content-type: application/json
+```
+Curl command
+```
 curl -X GET -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/queries/tasks/instances/pot-owners?page=0&pageSize=10&sortOrder=true" -H  "accept: application/json"
+```
 
-7. review task data input
-curl -X GET -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/20/contents/input" -H  "accept: application/json"
+8. review task data input  
+Review task data with id from #7, replace <task-id> from url
+```
+URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/contents/input
+Method: GET
+Basic Auth: manager1:manager1
+Header: 
+- accept: application/json
+- content-type: application/json
+```
+Curl command
+```
+curl -X GET -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/contents/input" -H  "accept: application/json"
+```
+  
+9. claim task id
+```
+URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/claimed
+Method: PUT
+Basic Auth: manager1:manager1
+Header: 
+- accept: application/json
+- content-type: application/json
+```
+Curl command
+```
+curl -X PUT -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/claimed" -H  "accept: application/json"
+```
 
-8. claim task id
-curl -X PUT -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/20/states/claimed" -H  "accept: application/json"
+10. start task id
+```
+URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/started
+Method: PUT
+Basic Auth: manager1:manager1
+Header: 
+- accept: application/json
+- content-type: application/json
+```
+Curl command
+```
+curl -X PUT -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/started" -H  "accept: application/json"
+```
 
-9. start task id
-curl -X PUT -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/20/states/started" -H  "accept: application/json"
+11. complete task id
+```
+URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/completed
+Method: PUT
+Basic Auth: manager1:manager1
+Header: 
+- accept: application/json
+- content-type: application/json
+Body: copy from https://raw.githubusercontent.com/adithaha/rhpam73-workshop/master/qualify.json
+```
+Curl command
+```
+curl -X PUT -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/completed" -H  "accept: application/json" -H "content-type: application/json"
+```
 
-10. complete task id
-curl -X PUT -u 'manager1:manager1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/20/states/completed" -H  "accept: application/json" -H "content-type: application/json"
+### REVIEW COMPLETED PROCESS INSTANCE (admin)
+12. review completed process instance, process-instance-state=2 means already completed
+```
+URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/instances/<task-id>
+Method: PUT
+Basic Auth: rhpamAdmin:admin123!@#
+Header: 
+- accept: application/json
+- content-type: application/json
+```
+Curl command
+```
+curl -X GET -u 'rhpamAdmin:admin123!@#' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/instances/<task-id>" -H  "accept: application/json"
+```
 
-
-— REVIEW COMPLETED PROCESS INSTANCE (admin) —
-11. review completed process instance, process-instance-state=2 means already completed
-curl -X GET -u 'rhpamAdmin:admin123!@#' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/instances/35" -H  "accept: application/json"
