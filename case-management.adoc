@@ -114,7 +114,7 @@ image::images/api-definition-start.png[]
 +
 image::images/api-definition-try.png[]
 
-. Fill the required information about your container-id and the process definition-id. Note that you can also pass variables to the case using json syntax.
+. Fill the required information about your container-id and the process definition-id. Note that you can also pass variables to the case using json syntax. (containerId: itorders_1.0.0-SNAPSHOT, caseDefId: itorders.orderhardware)
 +
 image::images/api-definition-parameters.png[]
 
