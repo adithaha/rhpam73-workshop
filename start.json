@@ -1,0 +1,22 @@
+{
+  "application": {
+    "com.myspace.mortgage_app.Application": {
+      "applicant": {
+        "com.myspace.mortgage_app.Applicant": {
+          "name": "john",
+          "annualincome": 20000,
+          "ssn": 12345
+        }
+      },
+      "property": {
+        "com.myspace.mortgage_app.Property": {
+          "age": 0,
+          "address": "jakarta",
+          "saleprice": 20000
+        }
+      },
+      "downpayment": 10000,
+      "amortization": 5
+    }
+  }
+}
