@@ -129,11 +129,11 @@ image::images/case-execute-error.png[]
 
 {"case-data" : {  },
   "case-user-assignments" : {
-    "owner" : "john",
-    "manager" : "john"
+    "owner" : "rhpamAdmin",
+    "manager" : "manager1"
   },
   "case-group-assignments" : {
-    "supplier" : "admin"
+    "supplier" : "supplier1"
  }
 }
 
