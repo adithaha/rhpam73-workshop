@@ -30,10 +30,7 @@ Access Mortgage process via API
 container id: mortgage-process_1.0.0-SNAPSHOT
 process id: Mortgage_Process.MortgageApprovalProcess
 
-
-— START PROCESS (admin) —
-
-
+# START PROCESS (admin)
 1. start process  
 review the body request
 ```
@@ -54,7 +51,7 @@ Curl command
 curl -X POST -u 'rhpamAdmin:admin123!@#' --data @start.json "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/Mortgage_Process.MortgageApprovalProcess/instances" -H  "accept: application/json" -H  "content-type: application/json" 
 ```
 
-— QUALIFY TASK (approver) —
+# QUALIFY TASK (approver)
 2. get task inbox, choose task id
 curl -X GET -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/queries/tasks/instances/pot-owners?page=0&pageSize=10&sortOrder=true" -H  "accept: application/json"
 
