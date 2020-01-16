@@ -1,0 +1,188 @@
+:scrollbar:
+:data-uri:
+:toc2:
+
+== Sample Case Project Navigation Lab
+
+This module showcases the new Case Management features supported in PAM 7 it will use the  Business Central environment provisioned during the _Environment Setup Lab_.n module 1.  The business assets are retrieved from the `IT Orders` sample project, one of the demonstration samples available.
+
+In this lab, you will import the `IT Orders` project in the Business Central workbench of Red Hat Process Automation Manager 7.
+You will navigate the project's assets, like case definitions, rules, case properties, and forms, in the project's library.
+You will build and deploy the project onto the the Process Server, the platform's ligth-weight runtime engine, after which we will start a IT Order process instance.
+Finally, you will explore the runtime process and task management using the process instance created in the previous step, to highlight the differences in the execution of a case.
+
+.Goals
+* Become familiar with business Case Management business  assets and their organization for a case project.
+* Search for and open business assets for viewing and understanding the differences between a case and a project at configuration level.
+* Become familiar with the build and deployment process of a case 
+* Start a process instance and explore the REST api to interact with them. 
+
+.Prerequisites
+* Successful completion of the _Environment Setup Lab_
+* Successful login to Business Central
+
+:numbered:
+
+== Create a sample Case Project
+
+Go to the Design view in Business Central project.
+
+image::images/empty-library-perspective.png[]
+
+With an empty project library view, you have the option to create a project, try a sample, or import an existing project.
+
+In this lab we will use a sample to create a new Case Management project.
+
+. From the empty project library view, click *Try samples*. Or from a non-empty project library click on the right hand upper side and select *Try Samples*  
+* You will be redirected to the samples page where you can select the sample project, in this case we will select the IT Orders Case management project.
+. Click ok after selecting the project, the sample project will be imported.
++
+image::images/import-itOrders.png[]
+* Inspect the assets in the project. Process, forms, data objects,etc. 
++
+image::images/import_pamf_lab2.png[]
+
+== Navigate the Case Management Project
+
+The project library view shows a tabular list of the assets in the project. Select the process orderhardware.bpmn2 and inspect the properties. 
+=== Case project properties 
+
+The properties that are unique to  a Case Project are: AdHoc, Case ID Prefix and Case roles. Examine those in the IT Orders Case.
++
+image::images/case-project-properties.png[]
+
+Examine the 'Place order' subprocess node:
+* Select  the node and click on the properties arrows in the upper right hand side. What are the variables passed from the main process?
+* Examine the name of the variables, when they are CaseFile variables.
+
+* Click on the subprocess node, the navigator will redirect you to the process place-order.bpmn2 definition.  
+* This particular process was authored using the new modeling tool in PAM7. So you can experience the new modeling capabilities coming in the platform. 
++
+image::images/place-order.png[]
+
+* Select the 'Place Order' user node and and then view the properties of the node. 
+
+* Navigate to the Implementation/Execution section in the properties.
+
+* Click on the assignments edit button and examine the varibles defined for this user node, obsereve the differences between the variable _hwSpec and requestor?
++
+image::images/task_node_variables.png[] 
+
+== Build and Deploy the Case project.
+
+. Navigate to the project home page, and build and deploy the project.
++
+image::images/build-deploy.png[]
+. Keep in mind that when you click on deploy, the project will be build and deployed for you.
++
+image::images/deploy.png[]
+
+Navigate to the Manage section and go to Process Definitions.
+
+. Find your process definition
++
+image::images/it-order-definition.png[]
+. Select the process definition Order for IT Hardware and review the details of the process.
++
+image::images/it-order-definition-detail.png[]
+
+== Execute the IT orders Case Project
+
+.To be able to interact with the process' User tasks we will need to create the groups that are defined in the Case. In case you don't have access to the project definition in the authoring view, you can see the groups needed in the process definition detail from the previous step. 
+
+Roles
+*manager
+*owner
+*supplier
+
+. Create the roles in the settings configuration for your user, before instantiating the process.
++
+image::images/create-roles.png[]
+
+. Save the changes to the security settings
++
+image::images/save-security-changes.png[]
+
+. You can interact with your case process instance  using the REST endpoints in the API. Navigate to the API Swagger page and locate the Case Management section
++
+image::images/api-definition.png[]
+
+. Locate the endpoint to start a case instance and click on Try it out!
++
+image::images/api-definition-start.png[]
+
++
+image::images/api-definition-try.png[]
+
+. Fill the required information about your container-id and the process definition-id. Note that you can also pass variables to the case using json syntax.
++
+image::images/api-definition-parameters.png[]
+
+. Execute the call, you should see a reponse like the following:.
++
+image::images/case-execute-error.png[]
+
+. Execute the call again but, this time passing the required parameters to the process such as role assignments for the case. 
+[NOTE] 
+
+. Change the parameters values to match your user namme and roles created
+
+{"case-data" : {  },
+  "case-user-assignments" : {
+    "owner" : "john",
+    "manager" : "john"
+  },
+  "case-group-assignments" : {
+    "supplier" : "admin"
+ }
+}
+
+. You should see a reponse lke the following, containing your case instance ID.ase-execute-success
+
++
+image::images/case-execute-success.png[]
+
+== Review the process instance running in Business Central.
+
+. Navigate to the Manage submenu and then select Process Instances
+. Select the process instance that you just started and review the Process instance details.
++
+image::images/running-instance-details.png[]
+. Navigate the different information sections, review the instance variables, logs, diagram, etc.
++
+image::images/running-instance-diagram.png[]
+
+. What nodes have been started? Which nodes where started? Identify the milestones of the process.
+. Go to the Task inbox and review the task that are available to you from your process instance. 
++
+image::images/running-instance-task-list.png[]
+
+. Create an empty file an name it test.txt. Select the Prepare hardware spec task and complete it uploading the test.txt file you just created. 
++
+image::images/running-instance-task-upload-file.png[]
+
+. Review the new user task created and complete that task as well, to approve the request for new hardware.
++
+image::images/running-instance-task-manager-approval.png[]
+
+. Everytime you complete one of the new user tasks created go back to your process instance and review the status of the process.
++
+image::images/running-instance-review.png[]
+
+. Once you have completed all the tasks, review the current active nodes.
++
+image::images/running-instance-review-milestones.png[]
+
+. Go to the documents of the case and check that the document that you uploaded is there. 
+
++
+image::images/running-instance-review-document.png[]
+
+. Check the completion conditions for the process milestones and review how the signaling works for those milestones.
+[NOTE] In a real life scenario, this would be done by the client application, using the API.
+
++
+image::images/running-instance-review-var-milestones.png[]
+
+. Continue till the completion of the process.
+
