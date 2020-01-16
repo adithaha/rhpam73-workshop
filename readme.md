@@ -6,5 +6,5 @@
 4. Lab 3 - http://static.opendigitalautomation.com/rhpam7_enablement/module2/02_2_import_assets_Lab.html
 5. Lab 4 - http://static.opendigitalautomation.com/rhpam7_enablement/module3/03_1_data_objects_and_process_design_Lab.html
 6. Lab 5 - http://static.opendigitalautomation.com/rhpam7_enablement/module3/03_2_forms_Lab.html
-7. Lab Case Management - https://github.com/MyriamFentanes/case_management_lab/blob/master/04_1_case_project_navgation_Lab.adoc (containerId: itorders_1.0.0-SNAPSHOT, caseDefId: itorders.orderhardware)
-8. Lab API -  - https://github.com/adithaha/rhpam73-workshop/blob/master/kie-api.md
+7. Lab Case Management - https://github.com/adithaha/rhpam73-workshop/blob/master/case-management.adoc
+8. Lab API - https://github.com/adithaha/rhpam73-workshop/blob/master/kie-api.md
