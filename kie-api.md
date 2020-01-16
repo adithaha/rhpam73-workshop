@@ -113,7 +113,7 @@ Curl command
 curl -X PUT -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/states/started" -H  "accept: application/json"
 ```
 
-6. complete task id
+6. complete task id  
 review the body request
 ```
 https://raw.githubusercontent.com/adithaha/rhpam73-workshop/master/qualify.json
