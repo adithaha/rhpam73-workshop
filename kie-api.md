@@ -24,7 +24,8 @@ $ add-user.bat -a -u manager1 -p manager1 -g user,manager
 Deploy sample application
 ---
 ```
-1. From space, Try Samples
+1. From space, Try Samples - Mortgage_Process - OK
+2. Deploy
 ```
 
 Access Mortgage process via API
