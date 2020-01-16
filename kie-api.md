@@ -39,13 +39,15 @@ review the body request
 https://raw.githubusercontent.com/adithaha/rhpam73-workshop/master/start.json
 
 start process, note process instance id response
+```
 URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/Mortgage_Process.MortgageApprovalProcess/instances
+Method: POST
 Basic Auth: rhpamAdmin:admin123!@#
 Header: 
 - accept: application/json
 - content-type: application/json
 Body: https://raw.githubusercontent.com/adithaha/rhpam73-workshop/master/start.json
-
+```
 curl -X POST -u 'rhpamAdmin:admin123!@#' --data @start.json "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/Mortgage_Process.MortgageApprovalProcess/instances" -H  "accept: application/json" -H  "content-type: application/json" 
 
 
