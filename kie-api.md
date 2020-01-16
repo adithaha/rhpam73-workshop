@@ -30,13 +30,13 @@ Access Mortgage process via API
 container id: mortgage-process_1.0.0-SNAPSHOT
 process id: Mortgage_Process.MortgageApprovalProcess
 
-# START PROCESS (admin)
+### START PROCESS (admin)
 1. start process  
 review the body request
 ```
 https://raw.githubusercontent.com/adithaha/rhpam73-workshop/master/start.json
 ```
-start process, note process instance id response
+Use any REST client you have, note process instance id response
 ```
 URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/Mortgage_Process.MortgageApprovalProcess/instances
 Method: POST
@@ -51,13 +51,36 @@ Curl command
 curl -X POST -u 'rhpamAdmin:admin123!@#' --data @start.json "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/processes/Mortgage_Process.MortgageApprovalProcess/instances" -H  "accept: application/json" -H  "content-type: application/json" 
 ```
 
-# QUALIFY TASK (approver)
-2. get task inbox, choose task id
+### QUALIFY TASK (approver)
+2. get task inbox, choose task id  
+Note task id that related to same process instance id in #1
+```
+URL: http://localhost:8080/kie-server/services/rest/server/queries/tasks/instances/pot-owners?page=0&pageSize=10&sortOrder=true
+Method: GET
+Basic Auth: rhpamAdmin:admin123!@#
+Header: 
+- accept: application/json
+- content-type: application/json
+```
+Curl command
+```
 curl -X GET -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/queries/tasks/instances/pot-owners?page=0&pageSize=10&sortOrder=true" -H  "accept: application/json"
+```
 
-3. review task data input
-curl -X GET -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/19/contents/input" -H  "accept: application/json"
-
+3. review task data input  
+Review task data with id from #2, replace <task-id> from url
+```
+URL: http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/contents/input
+Method: GET
+Basic Auth: rhpamAdmin:admin123!@#
+Header: 
+- accept: application/json
+- content-type: application/json
+```
+Curl command
+```
+curl -X GET -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/<task-id>/contents/input" -H  "accept: application/json"
+```
 3. claim task id
 curl -X PUT -u 'approver1:approver1' "http://localhost:8080/kie-server/services/rest/server/containers/mortgage-process_1.0.0-SNAPSHOT/tasks/19/states/claimed" -H  "accept: application/json"
 
